@@ -7,7 +7,7 @@
     <title>Abhijit Deshmukh | Tech Portfolio</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet"> 
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -86,70 +86,143 @@
         }
 
         /* Navigation */
+        /* Navigation */
+        /* Navigation Container */
         nav {
             position: fixed;
-            top: 2rem;
+            top: 1rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
-            background: var(--glass);
+            background: rgba(18, 18, 18, 0.8);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 50px;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
+            width: calc(100% - 2rem);
+            max-width: 600px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch;
+            /* Add fade effect to indicate scrollable content */
+            mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    black 10%,
+                    black 90%,
+                    transparent 100%);
         }
 
-        nav.scrolled {
-            top: 1rem;
-            padding: 0.5rem 1.5rem;
-            background: rgba(18, 18, 18, 0.8);
+        /* Hide scrollbar */
+        nav::-webkit-scrollbar {
+            display: none;
         }
 
+        /* Navigation Links */
         .nav-links {
-            display: flex;
+            display: inline-flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 0.5rem;
+            padding: 0 1.5rem;
+            white-space: nowrap;
+            margin: 0;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--light);
             font-weight: 500;
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 25px;
             transition: all 0.3s ease;
-            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-links a i {
+            margin-right: 0.3rem;
         }
 
         .nav-links a:hover {
             color: var(--primary);
         }
 
+        /* Scroll Indicators */
+        .nav-indicator {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-size: 1.2rem;
+            background: rgba(18, 18, 18, 0.5);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .nav-indicator.left {
+            left: 5px;
+        }
+
+        .nav-indicator.right {
+            right: 5px;
+        }
+
+        /* Show indicators when needed */
+        nav.scrollable-left .nav-indicator.left,
+        nav.scrollable-right .nav-indicator.right {
+            opacity: 0.7;
+        }
+
+        /* Make indicators more visible on hover */
+        nav.scrollable-left:hover .nav-indicator.left,
+        nav.scrollable-right:hover .nav-indicator.right {
+            opacity: 1;
+        }
+
+        /* For very small screens */
+        @media (max-width: 400px) {
+            .nav-links a span {
+                display: none;
+            }
+
+            .nav-links a i {
+                margin-right: 0;
+            }
+        }
 
         /* Hero Section */
         .hero {
             height: 100vh;
+            min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
         }
 
         .hero-content {
             max-width: 800px;
             position: relative;
             z-index: 1;
+            width: 100%;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2rem, 8vw, 4.5rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -158,17 +231,17 @@
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 4vw, 1.25rem);
             font-weight: 400;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             opacity: 0.9;
             color: rgba(245, 245, 247, 0.8);
         }
 
         .hero-description {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
             line-height: 1.7;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             opacity: 0.8;
             max-width: 600px;
             margin-left: auto;
@@ -179,7 +252,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             border-radius: 50px;
             color: white;
@@ -187,6 +260,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
         }
 
         .hero-cta:hover {
@@ -211,7 +285,7 @@
         .typing-text::after {
             content: '|';
             position: absolute;
-            right: -8px;
+            right: -5px;
             animation: blink 0.7s infinite;
         }
 
@@ -232,8 +306,8 @@
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 15px;
+            padding: 1.5rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -241,8 +315,8 @@
         }
 
         .glass-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
             background: var(--glass-highlight);
         }
 
@@ -259,31 +333,32 @@
 
         /* Sections */
         .section {
-            padding: 8rem 0;
+            padding: 5rem 0;
             position: relative;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: clamp(1.8rem, 6vw, 3rem);
             font-weight: 700;
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 3rem;
             position: relative;
             display: inline-block;
             left: 50%;
             transform: translateX(-50%);
+            width: 90%;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
             width: 100%;
             height: 3px;
@@ -293,80 +368,108 @@
 
         /* About Section */
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
             align-items: center;
         }
 
         .about-visual {
             position: relative;
-            height: 400px;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            max-width: 400px;
         }
 
-        .profile-card {
-            width: 300px;
-            height: 300px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
+        .profile-float {
+            width: 100%;
+            height: auto;
             display: flex;
-            align-items: center;
             justify-content: center;
-            position: relative;
+            align-items: center;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .profile-circle {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
-        .profile-card img {
+        .profile-circle img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 15px;
+            object-position: center;
+            transition: all 0.5s ease;
         }
 
-        .profile-card::before {
+        .profile-circle::after {
             content: '';
             position: absolute;
-            inset: -2px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-            z-index: -1;
-            border-radius: 15px;
-            animation: rotate 6s linear infinite;
+            inset: -5px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, #6C63FF, #00C9A7);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
+        .profile-circle:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
 
-            100% {
-                transform: rotate(360deg);
+            50% {
+                transform: translateY(-15px);
             }
+        }
+
+        .about-content {
+            width: 100%;
+            text-align: center;
         }
 
         .about-content h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--light);
         }
 
         .about-content p {
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 3.5vw, 1.1rem);
             line-height: 1.7;
             margin-bottom: 1.5rem;
             opacity: 0.9;
+            text-align: left;
         }
 
         .stats-row {
             display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
 
@@ -375,9 +478,11 @@
             background: var(--glass);
             backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            padding: 1.5rem;
-            border-radius: 15px;
-            min-width: 120px;
+            padding: 1rem;
+            border-radius: 12px;
+            min-width: 100px;
+            flex: 1 1 calc(50% - 1rem);
+            max-width: calc(50% - 1rem);
             transition: all 0.3s ease;
         }
 
@@ -387,7 +492,7 @@
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             font-family: 'Fira Code', monospace;
             background: linear-gradient(90deg, var(--primary), var(--accent));
@@ -397,7 +502,7 @@
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.8;
             margin-top: 0.5rem;
         }
@@ -405,45 +510,52 @@
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .skill-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .skill-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--light);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .skill-card h3 i {
             color: var(--primary);
+            font-size: 1.1rem;
         }
 
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 0.6rem;
         }
 
         .skill-tag {
             background: rgba(108, 99, 255, 0.1);
             border: 1px solid rgba(108, 99, 255, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 500;
             transition: all 0.3s ease;
             font-family: 'Fira Code', monospace;
@@ -457,16 +569,22 @@
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
         }
 
         .project-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -483,28 +601,29 @@
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .project-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--light);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .project-title i {
             color: var(--primary);
+            font-size: 1.1rem;
         }
 
         .project-description {
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             opacity: 0.9;
         }
 
@@ -512,32 +631,33 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .tech-badge {
             background: rgba(0, 201, 167, 0.1);
             border: 1px solid rgba(0, 201, 167, 0.3);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: 500;
             font-family: 'Fira Code', monospace;
         }
 
         .project-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .project-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
+            gap: 0.4rem;
+            padding: 0.5rem 0.9rem;
             border-radius: 5px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -568,7 +688,7 @@
             position: relative;
             max-width: 800px;
             margin: 0 auto;
-            padding-left: 2rem;
+            padding-left: 1.5rem;
         }
 
         .experience-timeline::before {
@@ -583,69 +703,75 @@
 
         .experience-card {
             position: relative;
-            margin-bottom: 3rem;
-            padding-left: 2rem;
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
         }
 
         .experience-card::before {
             content: '';
             position: absolute;
-            top: 10px;
-            left: -9px;
-            width: 16px;
-            height: 16px;
+            top: 8px;
+            left: -7px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--primary);
-            border: 3px solid var(--secondary);
+            border: 2px solid var(--secondary);
         }
 
         .experience-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             color: var(--light);
         }
 
         .experience-period {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--accent);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .experience-company {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             opacity: 0.8;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .experience-description {
-            font-size: 1rem;
-            line-height: 1.7;
+            font-size: 0.95rem;
+            line-height: 1.6;
             opacity: 0.9;
         }
 
         /* Contact Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
             max-width: 800px;
             margin: 0 auto;
+        }
+
+        @media (min-width: 500px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .contact-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
@@ -658,22 +784,23 @@
         }
 
         .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
             color: var(--primary);
         }
 
         .contact-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             color: var(--light);
         }
 
         .contact-info {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.9;
             font-family: 'Fira Code', monospace;
+            word-break: break-all;
         }
 
         .contact-link {
@@ -689,7 +816,7 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 0;
+            padding: 2rem 0;
             background: rgba(10, 10, 10, 0.5);
             backdrop-filter: blur(10px);
             border-top: 1px solid var(--glass-border);
@@ -698,13 +825,13 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
         }
 
         .social-link {
             color: var(--light);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             transition: all 0.3s ease;
         }
 
@@ -714,85 +841,90 @@
         }
 
         .copyright {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.7;
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .about-visual {
-                justify-content: center;
-                height: auto;
-                margin-bottom: 2rem;
-            }
-
-            .stats-row {
-                justify-content: center;
-            }
+        /* Utility classes */
+        .text-center {
+            text-align: center;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            .nav-links a span {
+                display: none;
             }
 
-            .section-title {
-                font-size: 2.2rem;
-                margin-bottom: 3rem;
+            .nav-links a i {
+                margin-right: 0;
+                font-size: 1rem;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .section {
-                padding: 5rem 0;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
+            .hero {
+                min-height: 500px;
             }
 
             .stat-item {
-                min-width: 100px;
-                padding: 1rem;
+                min-width: 80px;
+                padding: 0.8rem;
             }
 
             .stat-number {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
 
-            nav {
-                padding: 0.5rem 1rem;
+            .stat-label {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 6rem 0;
             }
 
-            .nav-links a {
-                font-size: 0.8rem;
-                padding: 0.5rem;
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                text-align: left;
+            }
+
+            .about-content {
+                text-align: left;
+            }
+
+            .stats-row {
+                justify-content: flex-start;
+                gap: 1.5rem;
+            }
+
+            .stat-item {
+                flex: none;
+                min-width: 120px;
+                max-width: none;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .section {
+                padding: 8rem 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
     </style>
@@ -802,14 +934,16 @@
     <div class="particles" id="particles"></div>
 
     <nav id="navbar">
+        <span class="nav-indicator left"><i class="fas fa-chevron-left"></i></span>
         <ul class="nav-links">
-            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-            <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
-            <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
-            <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#home"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> <span>About</span></a></li>
+            <li><a href="#skills"><i class="fas fa-code"></i> <span>Skills</span></a></li>
+            <li><a href="#projects"><i class="fas fa-project-diagram"></i> <span>Projects</span></a></li>
+            <li><a href="#experience"><i class="fas fa-briefcase"></i> <span>Experience</span></a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
         </ul>
+        <span class="nav-indicator right"><i class="fas fa-chevron-right"></i></span>
     </nav>
 
     <section class="hero" id="home">
@@ -833,63 +967,12 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-grid">
                 <div class="about-visual">
-                  
                     <div class="profile-float">
-  <div class="profile-circle">
-    <img src="1000130085.jpg" alt="Abhijit Deshmukh">
-  </div>
-</div>
-
-<style>
-.profile-float {
-  width: 400px;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: float 6s ease-in-out infinite;
-}
-
-.profile-circle {
-  width: 360px;
-  height: 360px;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.2);
-}
-
-.profile-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: all 0.5s ease;
-}
-
-.profile-circle::after {
-  content: '';
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  padding: 5px;
-  background: linear-gradient(45deg, #6C63FF, #00C9A7);
-  mask: linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-.profile-circle:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.05);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-</style>
+                        <div class="profile-circle">
+                            <!-- Replace with your actual image path -->
+                            <img src="1000130085.jpg" alt="Abhijit Deshmukh">
+                        </div>
+                    </div>
                 </div>
                 <div class="about-content">
                     <h2>Turning Ideas Into Reality</h2>
@@ -1077,7 +1160,6 @@
                         +91 8479808281
                     </a>
                 </div>
-                <!-- In the contact section -->
                 <div class="contact-card">
                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
                     <div class="contact-title">LinkedIn</div>
@@ -1086,8 +1168,6 @@
                         abhijitdeshmukh501
                     </a>
                 </div>
-
-                
                 <div class="contact-card">
                     <div class="contact-icon"><i class="fab fa-github"></i></div>
                     <div class="contact-title">GitHub</div>
@@ -1101,9 +1181,14 @@
 
     <footer>
         <div class="container">
-
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
             <div class="copyright">
-                &copy; Abhijit Deshmukh. All rights reserved.
+                &copy; 2024 Abhijit Deshmukh. All rights reserved.
             </div>
         </div>
     </footer>
@@ -1111,14 +1196,14 @@
     <script>
         // Create floating particles
         const particlesContainer = document.getElementById('particles');
-        const particleCount = 30;
+        const particleCount = 20; // Reduced for mobile performance
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
 
-            // Random size between 2px and 6px
-            const size = Math.random() * 4 + 2;
+            // Random size between 2px and 5px
+            const size = Math.random() * 3 + 2;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
 
@@ -1126,8 +1211,8 @@
             particle.style.left = `${Math.random() * 100}%`;
             particle.style.bottom = `-${size}px`;
 
-            // Random animation duration between 10s and 20s
-            const duration = Math.random() * 10 + 10;
+            // Random animation duration between 15s and 25s
+            const duration = Math.random() * 10 + 15;
             particle.style.animationDuration = `${duration}s`;
 
             // Random delay
@@ -1139,7 +1224,7 @@
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
+            if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
@@ -1153,7 +1238,7 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     window.scrollTo({
-                        top: target.offsetTop - 80,
+                        top: target.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
@@ -1166,6 +1251,7 @@
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
+        let typingSpeed = 150;
 
         function type() {
             const currentRole = roles[roleIndex];
@@ -1173,34 +1259,35 @@
             if (isDeleting) {
                 typingText.textContent = currentRole.substring(0, charIndex - 1);
                 charIndex--;
+                typingSpeed = 75;
             } else {
                 typingText.textContent = currentRole.substring(0, charIndex + 1);
                 charIndex++;
+                typingSpeed = charIndex % 3 === 0 ? 250 : 150; // Randomize speed slightly
             }
 
             if (!isDeleting && charIndex === currentRole.length) {
                 isDeleting = true;
-                setTimeout(type, 1500);
+                setTimeout(type, 1000);
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 roleIndex = (roleIndex + 1) % roles.length;
                 setTimeout(type, 500);
             } else {
-                const typingSpeed = isDeleting ? 75 : 150;
                 setTimeout(type, typingSpeed);
             }
         }
 
-        // Start typing animation after 1 second
-        setTimeout(type, 1000);
+        // Start typing animation after 0.5 second
+        setTimeout(type, 500);
 
         // Animate elements when they come into view
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.section, .glass-card');
+            const elements = document.querySelectorAll('.section, .glass-card, .skill-card, .project-card, .contact-card');
 
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
+                const screenPosition = window.innerHeight / 1.3;
 
                 if (elementPosition < screenPosition) {
                     element.style.opacity = '1';
@@ -1210,14 +1297,62 @@
         };
 
         // Set initial state for animation
-        document.querySelectorAll('.section, .glass-card').forEach(element => {
+        document.querySelectorAll('.section, .glass-card, .skill-card, .project-card, .contact-card').forEach(element => {
             element.style.opacity = '0';
-            element.style.transform = 'translateY(30px)';
-            element.style.transition = 'all 0.6s ease-out';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.5s ease-out';
         });
 
+        // Initialize animations
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+        animateOnScroll(); // Run once on load
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const nav = document.getElementById('navbar');
+            const navLinks = nav.querySelector('.nav-links');
+            const leftIndicator = nav.querySelector('.nav-indicator.left');
+            const rightIndicator = nav.querySelector('.nav-indicator.right');
+
+            function updateScrollIndicators() {
+                const scrollLeft = navLinks.scrollLeft;
+                const scrollWidth = navLinks.scrollWidth;
+                const clientWidth = navLinks.clientWidth;
+
+                // Remove all classes first
+                nav.classList.remove('scrollable-left', 'scrollable-right');
+
+                // Add appropriate classes
+                if (scrollLeft > 0) {
+                    nav.classList.add('scrollable-left');
+                }
+                if (scrollLeft < scrollWidth - clientWidth - 1) {
+                    nav.classList.add('scrollable-right');
+                }
+            }
+
+            // Initial check
+            updateScrollIndicators();
+
+            // Update on scroll
+            navLinks.addEventListener('scroll', updateScrollIndicators);
+
+            // Update on resize
+            window.addEventListener('resize', updateScrollIndicators);
+
+            // Add click handlers for arrows
+            leftIndicator.addEventListener('click', function () {
+                navLinks.scrollBy({ left: -100, behavior: 'smooth' });
+            });
+
+            rightIndicator.addEventListener('click', function () {
+                navLinks.scrollBy({ left: 100, behavior: 'smooth' });
+            });
+
+            // Make indicators clickable
+            leftIndicator.style.pointerEvents = 'auto';
+            rightIndicator.style.pointerEvents = 'auto';
+        });
     </script>
 </body>
 
