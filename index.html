@@ -11,15 +11,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary: #6C63FF;
-            --secondary: #FF6584;
-            --accent: #00C9A7;
-            --dark: #121212;
-            --darker: #0A0A0A;
-            --light: #F5F5F7;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --primary: #2563EB;
+            /* Deep blue */
+            --secondary: #3B82F6;
+            /* Bright blue */
+            --accent: #06D6A0;
+            /* Aqua */
+            --dark: #0F172A;
+            /* Navy */
+            --darker: #020617;
+            --light: #E2E8F0;
+
+            /* Glass effects */
+            --glass: rgba(37, 99, 235, 0.1);
+            --glass-border: rgba(59, 130, 246, 0.15);
+            --glass-highlight: rgba(6, 214, 160, 0.2);
         }
 
         * {
@@ -361,7 +367,7 @@
             bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
+            width: 80px;
             height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 3px;
@@ -445,6 +451,7 @@
                 transform: translateY(-5px);
             }
         }
+
 
         .about-content {
             width: 100%;
@@ -578,6 +585,15 @@
             .projects-grid {
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
+        }
+
+
+        .major-project {
+            margin-bottom: 3rem;
+            border: 2px solid #007BFF;
+            box-shadow: 0 6px 18px rgba(0, 123, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
         }
 
         .project-card {
@@ -954,7 +970,6 @@
                 <span class="typing-text">Computer Engineer</span>
             </div>
             <p class="hero-description">
-                I build innovative digital solutions with cutting-edge technology.
                 Passionate about creating efficient, scalable, and user-friendly applications.
             </p>
             <a href="#projects" class="hero-cta">
@@ -974,30 +989,32 @@
                             <img src="1000130085.jpg" alt="Abhijit Deshmukh">
                         </div>
                     </div>
+
                 </div>
                 <div class="about-content">
                     <h2>Turning Ideas Into Reality</h2>
                     <p>
-                        Currently pursuing Diploma in Computer Engineering at Rajarambapu Institute of Technology,
-                        I combine technical expertise with creative problem-solving to build impactful solutions.
+                        I'm a Computer Engineering student currently pursuing B.Tech after completing a
+                        diploma in the same field. I’m passionate about building real-world solutions that blend
+                        creativity, logic, and technology.
                     </p>
                     <p>
-                        As President of the Computer Engineering Students Association, I lead initiatives that
-                        foster innovation and collaboration among students, bridging the gap between academia and
-                        industry.
+                        With a solid foundation from my diploma and hands-on project experience, I focus on continuously
+                        learning and applying my skills to develop meaningful, user-centered applications.
                     </p>
+
                     <div class="stats-row">
                         <div class="stat-item">
-                            <div class="stat-number">90.33%</div>
-                            <div class="stat-label">Academic Score</div>
+                            <div class="stat-number">92.91%</div>
+                            <div class="stat-label">Diploma Score</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">8+</div>
-                            <div class="stat-label">Technologies</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">2</div>
+                            <div class="stat-number">1</div>
                             <div class="stat-label">Major Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Mini Projects</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">1</div>
@@ -1016,11 +1033,9 @@
                 <div class="skill-card">
                     <h3><i class="fas fa-laptop-code"></i> Programming</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">C++</span>
                         <span class="skill-tag">Java</span>
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">VB.NET</span>
                     </div>
                 </div>
                 <div class="skill-card">
@@ -1028,8 +1043,9 @@
                     <div class="skill-tags">
                         <span class="skill-tag">HTML</span>
                         <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JS</span>
-                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">PHP</span>
+
                     </div>
                 </div>
                 <div class="skill-card">
@@ -1037,7 +1053,7 @@
                     <div class="skill-tags">
                         <span class="skill-tag">MySQL</span>
                         <span class="skill-tag">Firebase</span>
-                        <span class="skill-tag">Database Design</span>
+                        <span class="skill-tag">MongoDB</span>
                     </div>
                 </div>
                 <div class="skill-card">
@@ -1056,18 +1072,48 @@
     <section class="section" id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
+            <div class="project-card major-project">
+                <div class="project-title"><i class="fas fa-chart-line"></i> CO Attainment System</div>
+                <p class="project-description">
+                    A comprehensive web-based system designed to calculate Course Outcome (CO) attainment based on
+                    student marks for MSBTE diploma courses.
+                    It enables educators to map COs with exam questions, link COs to relevant Program Outcomes (POs),
+                    and track overall student performance efficiently.
+                    The system supports automated CO calculation using predefined weightages, stores all mappings and
+                    assessment data securely in a MySQL database,
+                    and generates detailed analytics and reports. This tool simplifies academic documentation, supports
+                    continuous improvement, and aligns with NBA requirements.
+                </p>
+
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">XAMPP</span>
+                    <span class="tech-badge">MySQL</span>
+                    <span class="tech-badge">Web Dev</span>
+                </div>
+                <div class="project-links">
+                    
+                    <a href="#" class="project-link demo-link">
+                        <i class="fas fa-external-link-alt"></i> Demo
+                    </a>
+                </div>
+            </div>
             <div class="projects-grid">
+
                 <div class="project-card">
-                    <div class="project-title"><i class="fas fa-chart-line"></i> CO Attainment System</div>
+                    <div class="project-title"><i class="fas fa-cash-register"></i> Scrubbers Sales & Expense Management
+                        System
+                    </div>
                     <p class="project-description">
-                        Comprehensive system for calculating Course Outcomes attainment based on marks
-                        for MSBTE diploma courses. Features automated calculation, detailed analytics,
-                        and reporting capabilities for educators.
+                        A custom-built system to manage daily sales and expenses for a stainless steel scrubber
+                        business.
+                        Includes monthly/yearly reports, expense tracking and
+                        simple analytics to support small business operations.
                     </p>
                     <div class="project-tech">
-                        <span class="tech-badge">PHP</span>
-                        <span class="tech-badge">XAMPP</span>
-                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">MongoDB</span>
                         <span class="tech-badge">Web Dev</span>
                     </div>
                     <div class="project-links">
@@ -1079,6 +1125,7 @@
                         </a>
                     </div>
                 </div>
+
                 <div class="project-card">
                     <div class="project-title"><i class="fas fa-comments"></i> WhatsApp Clone</div>
                     <p class="project-description">
@@ -1090,7 +1137,6 @@
                         <span class="tech-badge">Android</span>
                         <span class="tech-badge">Java</span>
                         <span class="tech-badge">Firebase</span>
-                        <span class="tech-badge">Realtime DB</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="project-link code-link">
@@ -1101,6 +1147,55 @@
                         </a>
                     </div>
                 </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-university"></i> Bank Management System</div>
+                    <p class="project-description">
+                        A basic banking system that allows users to create accounts, check balances, transfer funds, and
+                        view transaction history.
+                        Designed as a learning project to understand CRUD operations, server-side scripting, and
+                        database connectivity.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">HTML/CSS</span>
+                        <span class="tech-badge">XAMPP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link code-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="project-link demo-link">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title"><i class="fas fa-hospital-symbol"></i> MediCare – Hospital Management
+                        System</div>
+                    <p class="project-description">
+                        A learning-based hospital management project developed to understand core concepts of web
+                        development and database integration.
+                        It includes basic modules for managing patients, appointments, doctors, and billing processes in
+                        a simplified structure.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">HTML/CSS</span>
+                        <span class="tech-badge">Bootstrap</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link code-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="project-link demo-link">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </section>
@@ -1121,7 +1216,7 @@
                         Gained hands-on experience in Android application development during a 6-week intensive program.
                         Worked on real-world projects implementing System Designs, Firebase integration, and modern
                         UI/UX principles.
-                        Collaborated with senior developers to debug and optimize application performance.
+                        Under Guidance of senior developers debug and optimize application performance.
                     </p>
                 </div>
                 <div class="experience-card">
@@ -1133,7 +1228,8 @@
                         <i class="fas fa-users"></i> Computer Engineering Students Association
                     </div>
                     <p class="experience-description">
-                        Lead a team to organize technical events, workshops, and coding competitions.
+                        Lead a team to organize technical events, workshops, and coding competitions in Rajarambapu
+                        Institute of Technology, Isalmpur.
                         Facilitate knowledge sharing sessions and mentor junior students in programming and project
                         development.
                         Coordinate with faculty to bridge academic curriculum with industry requirements.
@@ -1182,7 +1278,7 @@
 
     <footer>
         <div class="container">
-         
+
             <div class="copyright">
                 &copy; 2025 Abhijit Deshmukh. All rights reserved.
             </div>
